@@ -1,7 +1,7 @@
 Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.2.4
+Version:	2.2.7
 Release:	1
 License:	GPL
 Group:		Applications/System
