@@ -3,7 +3,7 @@ Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
 Version:	2.2.7
 Release:	1
-License:	GPL
+License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 Patch0:		%{name}-miscfix.patch
@@ -98,15 +98,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/CHANGES
+%doc README doc/{CHANGES,TODO}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libexecdir}/lib*.la
+%doc doc/{extensions.txt,libacl.txt}
 %attr(755,root,root) %{_libexecdir}/lib*.so
+%{_libexecdir}/lib*.la
 %{_includedir}/acl
 %{_includedir}/sys/*
 %{_mandir}/man[235]/*
