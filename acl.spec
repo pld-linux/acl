@@ -1,18 +1,19 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.2.23
-Release:	3
+Version:	2.2.27
+Release:	1
 License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
-# Source0-md5:	7e13778c38addfcdabf2cef291b78bcc
+# Source0-md5:	973c63cea7402345d834ceb0049a1f86
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	sed >= 4.0
 Requires:	attr >= 2.4.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,7 +34,7 @@ Summary:	Header files for acl library
 Summary(pl):	Pliki nag³ówkowe biblioteki acl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	attr-devel
+Requires:	attr-devel >= 2.4.16-3
 
 %description devel
 Header files to develop software which manipulate access control
@@ -97,6 +98,8 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
 ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
+%{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
+	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
 
 %find_lang %{name}
 
