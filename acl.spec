@@ -1,7 +1,7 @@
 Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.0.9
+Version:	2.0.11
 Release:	1
 License:	GPL
 Group:		Applications/System
@@ -71,8 +71,6 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.so
 ln -sf /lib/libacl.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libacl.so
 
-gzip -9nf doc/CHANGES
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -81,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.gz
+%doc doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) /lib/lib*.so.*.*
 %{_mandir}/man1/*
