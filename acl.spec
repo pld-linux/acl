@@ -1,16 +1,16 @@
 Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.2.7
-Release:	2
+Version:	2.2.13
+Release:	1
 License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
-# Source0-md5:	44cd87acbb1983c8df2bf94b3660e86e
+# Source0-md5:	179890f6dbd0b31701713947e6b8270f
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
-BuildRequires:	autoconf
 BuildRequires:	attr-devel >= 2.4.1
+BuildRequires:	autoconf
 Requires:	attr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
