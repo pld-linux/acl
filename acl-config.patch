@@ -1,0 +1,28 @@
+--- acl.conf~	Mon Sep 13 19:26:12 1999
++++ acl.conf	Wed Sep 15 14:55:47 1999
+@@ -31,20 +31,20 @@
+ :
+ 
+ BEEP BLINKINGBACKGROUNDBRIGHTYELLOW,refused connect  :Make sure we notice these
+-BeepBackgroundBrightYellow,Authentication failure
++BeepBackgroundBrightYellow,uthentication failure
+ BeepBackgroundBrightYellow,FAILED LOGIN
+ BACKGROUNDWHITE,kernel
+ BACKGROUNDYELLOW,LOGIN
+ BACKGROUNDYELLOW,adduser
+ BACKGROUNDYELLOW,connect from
+ Hide,(su),for user nobody
+-BACKGROUNDMAGENTA,PAM_pwdb,(su),opened,!nobody
++BACKGROUNDMAGENTA,PAM_unix,(su),opened,!nobody
+ BACKGROUNDBRIGHTBLUE,nessusd,new attack
+ BACKGROUNDBLUE,nessusd,!launching
+ BLUE,nessusd
+-MAGENTA,PAM_pwdb,(su)
+-BRIGHTRED,PAM_pwdb,password,changed
+-RED,PAM_pwdb
++MAGENTA,PAM_unix,(su)
++BRIGHTRED,PAM_unix,password,changed
++RED,PAM_unix
+ BACKGROUNDCYAN,named,!STATS,!Cleaned cache,!USAGE
+ HideCYAN,named
+ BEEPBACKGROUNDGREEN,ftpd,refused
