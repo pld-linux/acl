@@ -65,18 +65,21 @@ DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_includedir}/acl
+install -d $RPM_BUILD_ROOT{%{_includedir}/acl,%{_mandir}/man3}
 
-DIST_ROOT="$RPM_BUILD_ROOT"
+DIST_ROOT=$RPM_BUILD_ROOT
 DIST_INSTALL=`pwd`/install.manifest
 DIST_INSTALL_DEV=`pwd`/install-dev.manifest
 DIST_INSTALL_LIB=`pwd`/install-lib.manifest
 export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
-%{__make} install DIST_MANIFEST="$DIST_INSTALL"
-%{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
-%{__make} install-lib DIST_MANIFEST="$DIST_INSTALL_LIB"
 
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man3
+%{__make} install DIST_\
+	MANIFEST=$DIST_INSTALL
+%{__make} install-dev \
+	DIST_MANIFEST=$DIST_INSTALL_DEV
+%{__make} install-lib \
+	DIST_MANIFEST=$DIST_INSTALL_LIB
+
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
 echo ".so acl_copy_ext.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_copy_int.3
