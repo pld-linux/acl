@@ -13,8 +13,6 @@ URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_bindir	/bin
-
 %description
 A command (chacl) to manipulate POSIX access control lists under
 Linux.
@@ -56,6 +54,7 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_includedir}/acl
 
 DIST_ROOT="$RPM_BUILD_ROOT"
 DIST_INSTALL=`pwd`/install.manifest
@@ -72,6 +71,9 @@ echo ".so man3/acl_get_file.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_file.3
 echo ".so man3/acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
 echo ".so man3/acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.so
+ln -sf /lib/libacl.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libacl.so
+
 gzip -9nf doc/CHANGES
 
 %clean
@@ -80,11 +82,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/*.gz
+%attr(755,root,root) /bin/*
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) /lib/lib*.so.*.*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.a
 %{_includedir}/acl
+%{_includedir}/sys/*
 %{_mandir}/man[235]/*
