@@ -1,11 +1,11 @@
 Summary:	Advanced Color Logs
 Summary(pl):	Advanced Color Logs - program koloruj±cy logi
 Name:		acl
-Version:	0.6.0
+Version:	0.7.0
 Release:	1
+License:	GPL
 Group:		Utilities/Console
 Group(pl):	Narzêdzia/Konsola
-Copyright:	GPL
 Source:		http://spyjurenet.com/linuxrc.org/projects/acl/%{name}-%{version}.tar.gz
 Patch:		acl-config.patch
 URL:		http://spyjurenet.com/linuxrc.org/projects/acl/
