@@ -28,7 +28,7 @@ Group:		Development/Libraries
 Header files and libraries to develop software which manipulate access
 control lists.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
 manipuluj±cego listami kontroli dostêpu (ACL).
 
@@ -50,7 +50,7 @@ install -d $RPM_BUILD_ROOT%{_includedir}/acl
 DIST_ROOT="$RPM_BUILD_ROOT"
 DIST_INSTALL=`pwd`/install.manifest
 DIST_INSTALL_DEV=`pwd`/install-dev.manifest
-export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV 
+export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV
 %{__make} install DIST_MANIFEST="$DIST_INSTALL"
 %{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
 
