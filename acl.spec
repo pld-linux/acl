@@ -56,11 +56,11 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
-echo ".so man3/acl_copy_ext.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_copy_int.3
-echo ".so man3/acl_get_fd.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_fd.3
-echo ".so man3/acl_get_file.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_file.3
-echo ".so man3/acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
-echo ".so man3/acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
+echo ".so acl_copy_ext.3" > $RPM_BUILD_ROOT%{_mandir}/man3/acl_copy_int.3
+echo ".so acl_get_fd.3" > $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_fd.3
+echo ".so acl_get_file.3" > $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_file.3
+echo ".so acl_from_text.3" > $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
+echo ".so acl_from_text.3" > $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.so
 ln -sf /lib/libacl.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libacl.so
