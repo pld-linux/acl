@@ -1,8 +1,8 @@
 Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.0.11
-Release:	2
+Version:	2.0.15
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -12,6 +12,10 @@ BuildRequires:	autoconf
 BuildRequires:	attr-devel >= 2.0.0
 Requires:	attr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_bindir		/bin
+%define		_libdir		/lib
+%define		_libexecdir	/usr/lib
 
 %description
 A command (chacl) to manipulate POSIX access control lists under
@@ -80,8 +84,8 @@ echo ".so acl_get_file.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_file.3
 echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
 echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.so
-ln -sf /lib/libacl.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libacl.so
+rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
+ln -sf %{_libdir}/libacl.so.1.0.2 $RPM_BUILD_ROOT%{_libexecdir}/libacl.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -93,17 +97,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) /lib/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.la
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libexecdir}/lib*.la
+%attr(755,root,root) %{_libexecdir}/lib*.so
 %{_includedir}/acl
 %{_includedir}/sys/*
 %{_mandir}/man[235]/*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libexecdir}/lib*.a
