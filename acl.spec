@@ -2,7 +2,7 @@ Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
 Version:	2.0.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -22,17 +22,30 @@ Komenda (chacl) do manipulowania zgodnymi z POSIX listami kontroli
 dostêpu (ACL) pod Linuksem.
 
 %package devel
-Summary:	Header files and libraries to manipulate acls
-Summary(pl):	Pliki nag³ówkowe i biblioteki do manipulacji ACL-ami
+Summary:	Header files for acl library
+Summary(pl):	Pliki nag³ówkowe biblioteki acl
 Group:		Development/Libraries
+Requires:	%{name} = %{version}
 
 %description devel
-Header files and libraries to develop software which manipulate access
-control lists.
+Header files to develop software which manipulate access control
+lists.
 
 %description devel -l pl
-Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
-manipuluj±cego listami kontroli dostêpu (ACL).
+Pliki nag³ówkowe potrzebne do rozwoju oprogramowania manipuluj±cego
+listami kontroli dostêpu (ACL).
+
+%package static
+Summary:	Static acl library
+Summary(pl):	Statyczna biblioteka acl
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static acl library.
+
+%description static -l pl
+Statyczna biblioteka acl.
 
 %prep
 %setup  -q
@@ -58,7 +71,6 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 %{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
 %{__make} install-lib DIST_MANIFEST="$DIST_INSTALL_LIB"
 
-
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
@@ -74,8 +86,8 @@ ln -sf /lib/libacl.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libacl.so
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -88,7 +100,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.a
 %{_includedir}/acl
 %{_includedir}/sys/*
 %{_mandir}/man[235]/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
