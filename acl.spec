@@ -7,7 +7,7 @@ License:	GPL
 Group:		Utilities/Console
 Group(pl):	Narzêdzia/Konsola
 Source0:	http://spyjurenet.com/linuxrc.org/projects/acl/%{name}-%{version}.tar.gz
-Patch0:		acl-config.patch
+Patch0:		%{name}-config.patch
 URL:		http://spyjurenet.com/linuxrc.org/projects/acl/
 Requires:	perl
 BuildArch:	noarch
