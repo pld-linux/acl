@@ -9,7 +9,7 @@ Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{versio
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
-BuildRequires:	attr-devel >= 2.0.0
+BuildRequires:	attr-devel >= 2.4.1
 Requires:	attr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
