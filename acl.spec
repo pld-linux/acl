@@ -7,7 +7,6 @@ License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 # Source0-md5:	7e13778c38addfcdabf2cef291b78bcc
-Source1:	%{name}-pl.po
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.15
@@ -33,7 +32,7 @@ POSIX listami kontroli dostêpu (ACL) pod Linuksem.
 Summary:	Header files for acl library
 Summary(pl):	Pliki nag³ówkowe biblioteki acl
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	attr-devel
 
 %description devel
@@ -48,7 +47,7 @@ listami kontroli dostêpu (ACL).
 Summary:	Static acl library
 Summary(pl):	Statyczna biblioteka acl
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static acl library.
@@ -59,10 +58,6 @@ Statyczna biblioteka acl.
 %prep
 %setup -q
 %patch0 -p1
-chmod -Rf u+w .
-
-cp %{SOURCE1} po/pl.po
-%{__perl} -pi -e 's/^(LINGUAS.*)/$1 pl/' po/Makefile
 
 %build
 rm -f aclocal.m4
