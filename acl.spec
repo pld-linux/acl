@@ -11,7 +11,7 @@ Patch:		acl-config.patch
 URL:		http://spyjurenet.com/linuxrc.org/projects/acl/
 Requires:	perl
 BuildArch:	noarch
-BuildRoot:   	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 acl is a perl script that colorizes system logs. Inspired by ColorLogs, 
