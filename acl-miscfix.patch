@@ -1,11 +1,28 @@
-diff -urN aaa/acl-2.2.13/configure.in acl-2.2.13/configure.in
---- aaa/acl-2.2.13/configure.in	2003-06-25 03:51:25.000000000 +0200
-+++ acl-2.2.13/configure.in	2003-08-06 01:24:19.000000000 +0200
-@@ -17,7 +17,6 @@
- AC_PACKAGE_NEED_ATTR_XATTR_H
- AC_PACKAGE_NEED_ATTR_ERROR_H
- AC_PACKAGE_NEED_GETXATTR_LIBATTR
--AC_MANUAL_FORMAT
- 
- AC_FUNC_GCC_VISIBILITY
- 
+--- acl-2.2.13/m4/manual_format.m4.orig	2003-06-25 03:51:27.000000000 +0200
++++ acl-2.2.13/m4/manual_format.m4	2003-08-08 21:14:48.000000000 +0200
+@@ -6,12 +6,5 @@
+ # 
+ AC_DEFUN([AC_MANUAL_FORMAT],
+   [ have_zipped_manpages=false
+-    for d in ${prefix}/share/man ${prefix}/man ; do
+-        if test -f $d/man1/man.1.gz
+-        then
+-            have_zipped_manpages=true
+-            break
+-        fi
+-    done
+     AC_SUBST(have_zipped_manpages)
+   ])
+--- acl-2.2.13/m4/package_utilies.m4.orig	2003-06-25 03:51:27.000000000 +0200
++++ acl-2.2.13/m4/package_utilies.m4	2003-08-08 21:15:02.000000000 +0200
+@@ -17,9 +17,7 @@
+ #  MSGFMT MSGMERGE RPM
+ #
+ AC_DEFUN([AC_PACKAGE_UTILITIES],
+-  [ if test -z "$CC"; then
+-        AC_PROG_CC
+-    fi
++  [ AC_PROG_CC
+     cc="$CC"
+     AC_SUBST(cc)
+     AC_PACKAGE_NEED_UTILITY($1, "$cc", cc, [C compiler])

@@ -1,5 +1,5 @@
-Summary:	Command for manipulating access control lists
-Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
+Summary:	Command and library for manipulating access control lists
+Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
 Version:	2.2.13
 Release:	1
@@ -11,7 +11,8 @@ Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.1
 BuildRequires:	autoconf
-Requires:	attr
+BuildRequires:	automake
+Requires:	attr >= 2.4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
@@ -19,18 +20,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_libexecdir	/usr/lib
 
 %description
-A command (chacl) to manipulate POSIX access control lists under
-Linux.
+A command (chacl) and a library (libacl) to manipulate POSIX access
+control lists under Linux.
 
 %description -l pl
-Komenda (chacl) do manipulowania zgodnymi z POSIX listami kontroli
-dostêpu (ACL) pod Linuksem.
+Polecenie (chacl) i biblioteka (libacl) do manipulowania zgodnymi z
+POSIX listami kontroli dostêpu (ACL) pod Linuksem.
 
 %package devel
 Summary:	Header files for acl library
 Summary(pl):	Pliki nag³ówkowe biblioteki acl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	attr-devel
 
 %description devel
 Header files to develop software which manipulate access control
@@ -53,13 +55,17 @@ Static acl library.
 Statyczna biblioteka acl.
 
 %prep
-%setup  -q
+%setup -q
 %patch0 -p1
 
 %build
-DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
+#DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
+rm -f aclocal.m4
+%{__aclocal} -I m4
 %{__autoconf}
-%configure
+%configure \
+	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
+	OPTIMIZER="%{rpmcflags}"
 
 %{__make}
 
@@ -89,7 +95,7 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
 echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
-ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT/lib ; echo libacl.so.*.*.*) \
+ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
 
 %find_lang %{name}
