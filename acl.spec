@@ -1,7 +1,7 @@
 Summary:	Command for manipulating access control lists
 Summary(pl):	Komenda do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	1.0.4
+Version:	1.1.3
 Release:	1
 License:	GPL
 Group:		Applications/System
@@ -45,7 +45,7 @@ manipuluj±cego listami kontroli dostêpu (ACL).
 %build
 DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
 autoconf
-%configure 
+%configure
 
 %{__make}
 
