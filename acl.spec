@@ -7,6 +7,7 @@ License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 Patch0:		%{name}-miscfix.patch
+# Source0-md5:	e0a3dbc2168c2bec610285632dca2bfe	
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	attr-devel >= 2.0.0
