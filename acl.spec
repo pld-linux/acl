@@ -73,8 +73,8 @@ DIST_INSTALL_DEV=`pwd`/install-dev.manifest
 DIST_INSTALL_LIB=`pwd`/install-lib.manifest
 export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 
-%{__make} install DIST_\
-	MANIFEST=$DIST_INSTALL
+%{__make} install \
+	DIST_MANIFEST=$DIST_INSTALL
 %{__make} install-dev \
 	DIST_MANIFEST=$DIST_INSTALL_DEV
 %{__make} install-lib \
