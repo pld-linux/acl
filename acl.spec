@@ -9,7 +9,7 @@ Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{versio
 # Source0-md5:	7e13778c38addfcdabf2cef291b78bcc
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
-BuildRequires:	attr-devel >= 2.4.15
+BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -97,8 +97,6 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
 ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
-%{__perl} -pi -e 's@ %{_libdir}/libattr\.la@ %{_libexecdir}/libattr.la@' \
-	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
 
 %find_lang %{name}
 
