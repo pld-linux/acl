@@ -10,6 +10,7 @@ Source:		http://spyjurenet.com/linuxrc.org/projects/acl/%{name}-%{version}.tar.g
 Patch:		acl-config.patch
 URL:		http://spyjurenet.com/linuxrc.org/projects/acl/
 Requires:	perl
+BuildArch:	noarch
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
 %description
