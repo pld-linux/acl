@@ -85,7 +85,8 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
 echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
-ln -sf %{_libdir}/libacl.so.1.0.3 $RPM_BUILD_ROOT%{_libexecdir}/libacl.so
+ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT/lib ; echo libacl.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
 
 %find_lang %{name}
 
