@@ -41,4 +41,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,NEWS,TODO}.gz
 %attr(755,root,root) %{_bindir}/acl
-%config /etc/acl.conf
+%config(noreplace) %verify(not size mtime md5) /etc/acl.conf
