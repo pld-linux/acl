@@ -2,11 +2,12 @@ Summary:	Command and library for manipulating access control lists
 Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
 Version:	2.2.22
-Release:	1
+Release:	2
 License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 # Source0-md5:	c448c1bee6014bc48a386c222d357873
+Source1:	%{name}-pl.po
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.12
@@ -59,14 +60,16 @@ Statyczna biblioteka acl.
 %setup -q
 %patch0 -p1
 
+cp %{SOURCE1} po/pl.po
+%{__perl} -pi -e 's/^(LINGUAS.*)/$1 pl/' po/Makefile
+
 %build
-#DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
 rm -f aclocal.m4
 %{__aclocal} -I m4
 %{__autoconf}
 %configure \
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
-	OPTIMIZER="%{rpmcflags}"
+	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
 
 %{__make}
 
