@@ -2,7 +2,7 @@ Summary:	Command and library for manipulating access control lists
 Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
 Version:	2.2.23
-Release:	1
+Release:	2
 License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -97,6 +97,8 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
 ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
+%{__perl} -pi -e 's@ %{_libdir}/libattr\.la@ %{_libexecdir}/libattr.la@' \
+	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
 
 %find_lang %{name}
 
