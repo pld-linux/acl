@@ -1,28 +1,47 @@
---- acl.conf~	Mon Sep 13 19:26:12 1999
-+++ acl.conf	Wed Sep 15 14:55:47 1999
-@@ -31,20 +31,20 @@
- :
+--- acl.conf.pius	Thu Jan  6 17:00:30 2000
++++ acl.conf	Thu Jan 20 21:35:26 2000
+@@ -43,9 +43,10 @@
+ Service, identd, normal
+ Service, ftpd, BrightGreen  : Note this also does tftpd
+ Service, named, BrightCyan
+-Service, PAM_pwdb, BrightMagenta
++Service, PAM_unix, BrightMagenta
+ Service, login, BrightYellow
+ Service, telnetd, Yellow
++Service, inetd, Yellow
+ Service, snort, BrightRed
  
- BEEP BLINKINGBACKGROUNDBRIGHTYELLOW,refused connect  :Make sure we notice these
--BeepBackgroundBrightYellow,Authentication failure
-+BeepBackgroundBrightYellow,uthentication failure
- BeepBackgroundBrightYellow,FAILED LOGIN
- BACKGROUNDWHITE,kernel
- BACKGROUNDYELLOW,LOGIN
- BACKGROUNDYELLOW,adduser
- BACKGROUNDYELLOW,connect from
- Hide,(su),for user nobody
--BACKGROUNDMAGENTA,PAM_pwdb,(su),opened,!nobody
-+BACKGROUNDMAGENTA,PAM_unix,(su),opened,!nobody
- BACKGROUNDBRIGHTBLUE,nessusd,new attack
- BACKGROUNDBLUE,nessusd,!launching
- BLUE,nessusd
--MAGENTA,PAM_pwdb,(su)
--BRIGHTRED,PAM_pwdb,password,changed
--RED,PAM_pwdb
-+MAGENTA,PAM_unix,(su)
-+BRIGHTRED,PAM_unix,password,changed
-+RED,PAM_unix
- BACKGROUNDCYAN,named,!STATS,!Cleaned cache,!USAGE
- HideCYAN,named
- BEEPBACKGROUNDGREEN,ftpd,refused
+ 
+@@ -63,10 +64,11 @@
+ 
+ 
+ : More alert stuff we want to highlight 
+-BackgroundBrightYellow,Authentication failure
++BackgroundBrightYellow,uthentication failure
+ BackgroundBrightYellow,FAILED LOGIN		: telnetd
+ BackgroundBrightYellow,failed login		: ftpd
+ BeepBlinkingBackgroundBrightYellow,repeated login failures	: ftpd
++BrightRed,inetd,warning
+ 
+ 
+ : Further down the chain are these messages we don't want to miss.
+@@ -92,13 +94,13 @@
+ BackgroundWhite,modprobe
+ 
+ 
+-: PAM_pwdb stuff
++: PAM_unix stuff
+ Hide,(su),for user nobody		: Ignore `su nobody`
+-:BackgroundMagenta,PAM_pwdb,(su),opened	: `su nobody` already fell out
+-BackgroundMagenta,PAM_pwdb,opened
+-:Magenta,PAM_pwdb,(su)
+-Magenta,PAM_pwdb,closed
+-BrightMagenta,PAM_pwdb			: Everything else - passwd changes,
++:BackgroundMagenta,PAM_unix,(su),opened	: `su nobody` already fell out
++BackgroundMagenta,PAM_unix,opened
++:Magenta,PAM_unix,(su)
++Magenta,PAM_unix,closed
++BrightMagenta,PAM_unix			: Everything else - passwd changes,
+ 					: auth failures, unforeseen things 
+ 
+ 
