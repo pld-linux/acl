@@ -17,8 +17,8 @@ Requires:	attr >= 2.4.12
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
-%define		_libdir		/lib
-%define		_libexecdir	/usr/lib
+%define		_libdir		/%{_lib}
+%define		_libexecdir	/usr/%{_lib}
 
 %description
 A command (chacl) and a library (libacl) to manipulate POSIX access
