@@ -1,17 +1,11 @@
-diff -urN acl-1.0.1.org/configure.in acl-1.0.1/configure.in
---- acl-1.0.1.org/configure.in	Tue May  1 23:09:17 2001
-+++ acl-1.0.1/configure.in	Tue May  1 23:09:55 2001
-@@ -108,13 +111,6 @@
- dnl also check if man page source is gzipped
- dnl (usually on Debian, but not Redhat pre-7.0)
- have_zipped_manpages=false
--for d in ${prefix}/share/man ${prefix}/man ; do
--    if test -f $d/man1/man.1.gz
--    then
--	have_zipped_manpages=true
--	break
--    fi
--done
- AC_SUBST(have_zipped_manpages)
+diff -urN aaa/acl-2.2.13/configure.in acl-2.2.13/configure.in
+--- aaa/acl-2.2.13/configure.in	2003-06-25 03:51:25.000000000 +0200
++++ acl-2.2.13/configure.in	2003-08-06 01:24:19.000000000 +0200
+@@ -17,7 +17,6 @@
+ AC_PACKAGE_NEED_ATTR_XATTR_H
+ AC_PACKAGE_NEED_ATTR_ERROR_H
+ AC_PACKAGE_NEED_GETXATTR_LIBATTR
+-AC_MANUAL_FORMAT
  
- dnl checks for extended attributes header and library
+ AC_FUNC_GCC_VISIBILITY
+ 
