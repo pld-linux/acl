@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
 Name:		acl
-Version:	2.2.27
+Version:	2.2.28
 Release:	1
-License:	GPL v2 (chacl utility), LGPL v2+ (library and the rest)
+License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
-# Source0-md5:	973c63cea7402345d834ceb0049a1f86
+# Source0-md5:	69ba4f7e2bb87d20aedd15249f8747eb
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.16-3
