@@ -8,6 +8,7 @@ Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 # Source0-md5:	69ba4f7e2bb87d20aedd15249f8747eb
 Patch0:		%{name}-miscfix.patch
+Patch1:		%{name}-lt.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
@@ -60,6 +61,7 @@ Statyczna biblioteka acl.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f aclocal.m4
