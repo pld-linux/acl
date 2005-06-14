@@ -14,6 +14,7 @@ BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	libtool
 BuildRequires:	sed >= 4.0
 Requires:	attr >= 2.4.15
 Obsoletes:	libacl
