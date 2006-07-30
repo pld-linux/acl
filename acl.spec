@@ -63,6 +63,7 @@ Statyczna biblioteka acl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+sed -e '/LTLDFLAGS/s/$/ $(LLDFLAGS)/' -i libacl/Makefile
 
 %build
 rm -f aclocal.m4
@@ -72,7 +73,8 @@ rm -f aclocal.m4
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
 	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
 
-%{__make}
+%{__make} \
+	LLDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
