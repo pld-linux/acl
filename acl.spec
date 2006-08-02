@@ -9,13 +9,13 @@ Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{versio
 # Source0-md5:	4edd450bbee60d6c4b3c51ae80499b00
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
+Patch2:		%{name}-LDFLAGS.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
-BuildRequires:	sed >= 4.0
 Requires:	attr >= 2.4.15
 Obsoletes:	libacl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -63,7 +63,7 @@ Statyczna biblioteka acl.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-sed -e '/LTLDFLAGS/s/$/ $(LLDFLAGS)/' -i libacl/Makefile
+%patch2 -p1
 
 %build
 rm -f aclocal.m4
