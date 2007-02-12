@@ -1,5 +1,5 @@
 Summary:	Command and library for manipulating access control lists
-Summary(pl):	Polecenie i biblioteka do manipulacji listami kontroli dostêpu (ACL)
+Summary(pl.UTF-8):   Polecenie i biblioteka do manipulacji listami kontroli dostÄ™pu (ACL)
 Name:		acl
 Version:	2.2.39
 Release:	2
@@ -28,13 +28,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 A command (chacl) and a library (libacl) to manipulate POSIX access
 control lists under Linux.
 
-%description -l pl
+%description -l pl.UTF-8
 Polecenie (chacl) i biblioteka (libacl) do manipulowania zgodnymi z
-POSIX listami kontroli dostêpu (ACL) pod Linuksem.
+POSIX listami kontroli dostÄ™pu (ACL) pod Linuksem.
 
 %package devel
 Summary:	Header files for acl library
-Summary(pl):	Pliki nag³ówkowe biblioteki acl
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki acl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	attr-devel >= 2.4.16-3
@@ -43,20 +43,20 @@ Requires:	attr-devel >= 2.4.16-3
 Header files to develop software which manipulate access control
 lists.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do rozwoju oprogramowania manipuluj±cego
-listami kontroli dostêpu (ACL).
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do rozwoju oprogramowania manipulujÄ…cego
+listami kontroli dostÄ™pu (ACL).
 
 %package static
 Summary:	Static acl library
-Summary(pl):	Statyczna biblioteka acl
+Summary(pl.UTF-8):   Statyczna biblioteka acl
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static acl library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka acl.
 
 %prep
