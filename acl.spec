@@ -1,5 +1,5 @@
 Summary:	Command and library for manipulating access control lists
-Summary(pl.UTF-8):   Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
+Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
 Version:	2.2.39
 Release:	2
@@ -34,7 +34,7 @@ POSIX listami kontroli dostępu (ACL) pod Linuksem.
 
 %package devel
 Summary:	Header files for acl library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki acl
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki acl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	attr-devel >= 2.4.16-3
@@ -49,7 +49,7 @@ listami kontroli dostępu (ACL).
 
 %package static
 Summary:	Static acl library
-Summary(pl.UTF-8):   Statyczna biblioteka acl
+Summary(pl.UTF-8):	Statyczna biblioteka acl
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
