@@ -67,6 +67,8 @@ Statyczna biblioteka acl.
 
 %build
 rm -f aclocal.m4
+cp -f /usr/share/automake/config.sub .
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %configure \
@@ -74,7 +76,8 @@ rm -f aclocal.m4
 	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
 
 %{__make} \
-	LLDFLAGS="%{rpmldflags}"
+	LLDFLAGS="%{rpmldflags}" \
+	top_buillddir="../"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -87,11 +90,14 @@ DIST_INSTALL_LIB=`pwd`/install-lib.manifest
 export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 
 %{__make} install \
-	DIST_MANIFEST=$DIST_INSTALL
+	DIST_MANIFEST=$DIST_INSTALL \
+	top_buillddir="../"
 %{__make} install-dev \
-	DIST_MANIFEST=$DIST_INSTALL_DEV
+	DIST_MANIFEST=$DIST_INSTALL_DEV \
+	top_buillddir="../"
 %{__make} install-lib \
-	DIST_MANIFEST=$DIST_INSTALL_LIB
+	DIST_MANIFEST=$DIST_INSTALL_LIB \
+	top_buillddir="../"
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
