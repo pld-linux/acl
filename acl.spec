@@ -77,7 +77,7 @@ cp -f /usr/share/automake/config.sub .
 
 %{__make} \
 	LLDFLAGS="%{rpmldflags}" \
-	top_buillddir="../"
+	top_builddir="../"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -91,13 +91,13 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 
 %{__make} install \
 	DIST_MANIFEST=$DIST_INSTALL \
-	top_buillddir="../"
+	top_builddir="../"
 %{__make} install-dev \
 	DIST_MANIFEST=$DIST_INSTALL_DEV \
-	top_buillddir="../"
+	top_builddir="../"
 %{__make} install-lib \
 	DIST_MANIFEST=$DIST_INSTALL_LIB \
-	top_buillddir="../"
+	top_builddir="../"
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
