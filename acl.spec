@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.39
-Release:	2
+Version:	2.2.44
+Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
-# Source0-md5:	4edd450bbee60d6c4b3c51ae80499b00
+# Source0-md5:	f92f56998a94735419ec932fb9d0118d
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
@@ -65,9 +65,9 @@ Statyczna biblioteka acl.
 %patch1 -p1
 %patch2 -p1
 
-%build
 rm -f aclocal.m4
-cp -f /usr/share/automake/config.sub .
+
+%build
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -125,18 +125,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README doc/{CHANGES,TODO}
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libacl.so.*.*
 %{_mandir}/man[15]/*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{extensions.txt,libacl.txt}
-%attr(755,root,root) %{_libexecdir}/lib*.so
-%{_libexecdir}/lib*.la
+%attr(755,root,root) %{_libexecdir}/libacl.so
+%{_libexecdir}/libacl.la
 %{_includedir}/acl
 %{_includedir}/sys/*
 %{_mandir}/man[23]/*
 
 %files static
 %defattr(644,root,root,755)
-%{_libexecdir}/lib*.a
+%{_libexecdir}/libacl.a
