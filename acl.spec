@@ -83,11 +83,11 @@ rm -f aclocal.m4
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_includedir}/acl,%{_mandir}/man3}
 
+P=$(pwd)
 DIST_ROOT=$RPM_BUILD_ROOT
-DIST_INSTALL=`pwd`/install.manifest
-DIST_INSTALL_DEV=`pwd`/install-dev.manifest
-DIST_INSTALL_LIB=`pwd`/install-lib.manifest
-export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
+DIST_INSTALL=$P/install.manifest
+DIST_INSTALL_DEV=$P/install-dev.manifest
+DIST_INSTALL_LIB=$P/install-lib.manifest
 
 %{__make} install \
 	DIST_MANIFEST=$DIST_INSTALL \
@@ -108,10 +108,12 @@ echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
 echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
 
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
-ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libacl.so.*.*.*) \
+ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir}; echo libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
 %{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
+
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %find_lang %{name}
 
