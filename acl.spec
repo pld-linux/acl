@@ -83,8 +83,8 @@ rm -f aclocal.m4
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_includedir}/acl,%{_mandir}/man3}
 
+export DIST_ROOT=$RPM_BUILD_ROOT
 P=$(pwd)
-DIST_ROOT=$RPM_BUILD_ROOT
 DIST_INSTALL=$P/install.manifest
 DIST_INSTALL_DEV=$P/install-dev.manifest
 DIST_INSTALL_LIB=$P/install-lib.manifest
