@@ -2,7 +2,7 @@ Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
 Version:	2.2.47
-Release:	1
+Release:	2
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
@@ -70,9 +70,11 @@ Statyczna biblioteka acl.
 rm -f aclocal.m4
 
 %build
+mv install-sh install-custom-sh
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+mv install-custom-sh install-sh
 %configure \
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
 	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
