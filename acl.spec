@@ -74,6 +74,7 @@ mv install-sh install-custom-sh
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+cp -f /usr/share/automake/config.sub .
 mv install-custom-sh install-sh
 %configure \
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
