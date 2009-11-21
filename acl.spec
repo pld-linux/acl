@@ -1,17 +1,17 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.47
-Release:	2
+Version:	2.2.49
+Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
-Source0:	ftp://linux-xfs.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
-# Source0-md5:	a11e4571a54a0b1ae83010d1e68a64c2
+Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/acl-2.2.49.src.tar.gz
+# Source0-md5:	181445894cca986da9ae0099d5ce2d08
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
 Patch3:		%{name}-pl.po-update.patch
-URL:		http://oss.sgi.com/projects/xfs/
+URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
