@@ -5,7 +5,7 @@ Version:	2.2.49
 Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
-Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/acl-2.2.49.src.tar.gz
+Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/%{name}-%{version}.src.tar.gz
 # Source0-md5:	181445894cca986da9ae0099d5ce2d08
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
