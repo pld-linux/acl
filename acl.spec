@@ -2,7 +2,7 @@ Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
 Version:	2.2.49
-Release:	1
+Release:	2
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/%{name}-%{version}.src.tar.gz
@@ -104,24 +104,18 @@ DIST_INSTALL_LIB=$P/install-lib.manifest
 	DIST_MANIFEST=$DIST_INSTALL_LIB \
 	top_builddir="../"
 
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_copy_int,acl_set_fd,acl_set_file}.3
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{acl_to_short_text,acl_to_text}.3
-echo ".so acl_copy_ext.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_copy_int.3
-echo ".so acl_get_fd.3"		> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_fd.3
-echo ".so acl_get_file.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_set_file.3
-echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_short_text.3
-echo ".so acl_from_text.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/acl_to_text.3
-
-#rm -f $RPM_BUILD_ROOT%{_libexecdir}/lib*.so
 ln -snf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
 %{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
 	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
 
-rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 # already in /usr
-rm -f $RPM_BUILD_ROOT%{_libdir}/libacl.{so,la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libacl.{so,la,a}
+
+# fix perms (needed for debuginfo and autorequires/provides)
+chmod a+x $RPM_BUILD_ROOT%{_libdir}/libacl.so.*.*.*
 
 %find_lang %{name}
 
