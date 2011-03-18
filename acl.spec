@@ -17,6 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.402
 Requires:	attr >= 2.4.15
 Obsoletes:	libacl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
