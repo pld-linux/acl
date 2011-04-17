@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.49
-Release:	2
+Version:	2.2.50
+Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/%{name}-%{version}.src.tar.gz
-# Source0-md5:	181445894cca986da9ae0099d5ce2d08
+# Source0-md5:	4917495f155260c552d9fcff63769a98
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
