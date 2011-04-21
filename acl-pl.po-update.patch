@@ -1,131 +1,377 @@
---- acl-2.2.47/po/pl.po.orig	2007-09-11 04:00:49.000000000 +0200
-+++ acl-2.2.47/po/pl.po	2008-02-16 00:08:46.628227053 +0100
-@@ -176,7 +177,7 @@
+--- acl-2.2.51/po/pl.po.orig	2010-01-23 00:00:28.000000000 +0100
++++ acl-2.2.51/po/pl.po	2011-04-21 18:09:36.582567808 +0200
+@@ -1,6 +1,6 @@
+ # Polish translation for acl.
+ # Copyright (C) 2004 Free Software Foundation, Inc.
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2004.
++# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2011.
+ #
+ # This program is free software: you can redistribute it and/or modify it
+ # under the terms of the GNU General Public License as published by
+@@ -17,161 +17,168 @@
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: acl-2.2.22\n"
+-"POT-Creation-Date: 2004-01-28 22:30+0100\n"
+-"PO-Revision-Date: 2004-01-28 22:31+0100\n"
++"Project-Id-Version: acl-2.2.51\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2011-04-19 10:54-0700\n"
++"PO-Revision-Date: 2011-04-21 18:01+0200\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
++"Language: pl\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-2\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+-#: ../chacl/chacl.c:59
++#: ../chacl/chacl.c:46
+ #, c-format
+ msgid "Usage:\n"
+ msgstr "Sk³adnia:\n"
+ 
+-#: ../chacl/chacl.c:60
++#: ../chacl/chacl.c:47
+ #, c-format
+ msgid "\t%s acl pathname...\n"
+ msgstr "\t%s acl ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:61
++#: ../chacl/chacl.c:48
+ #, c-format
+ msgid "\t%s -b acl dacl pathname...\n"
+ msgstr "\t%s -b acl dacl ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:62
++#: ../chacl/chacl.c:49
+ #, c-format
+ msgid "\t%s -d dacl pathname...\n"
+ msgstr "\t%s -d dacl ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:63
++#: ../chacl/chacl.c:50
+ #, c-format
+ msgid "\t%s -R pathname...\n"
+ msgstr "\t%s -R ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:64
++#: ../chacl/chacl.c:51
+ #, c-format
+ msgid "\t%s -D pathname...\n"
+ msgstr "\t%s -D ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:65
++#: ../chacl/chacl.c:52
+ #, c-format
+ msgid "\t%s -B pathname...\n"
+ msgstr "\t%s -B ¶cie¿ka...\n"
+ 
+-#: ../chacl/chacl.c:66
++#: ../chacl/chacl.c:53
+ #, c-format
+ msgid "\t%s -l pathname...\t[not IRIX compatible]\n"
+ msgstr "\t%s -l ¶cie¿ka...\t[niekompatybilne z IRIX-em]\n"
+ 
+-#: ../chacl/chacl.c:68
++#: ../chacl/chacl.c:55
+ #, c-format
+ msgid "\t%s -r pathname...\t[not IRIX compatible]\n"
+ msgstr "\t%s -r ¶cie¿ka...\t[niekompatybilne z IRIX-em]\n"
+ 
+-#: ../chacl/chacl.c:159
++#: ../chacl/chacl.c:146
+ #, c-format
+ msgid "%s: error removing access acl on \"%s\": %s\n"
+ msgstr "%s: b³±d przy usuwaniu dostêpowego acl dla \"%s\": %s\n"
+ 
+-#: ../chacl/chacl.c:166
++#: ../chacl/chacl.c:153
+ #, c-format
+ msgid "%s: error removing default acl on \"%s\": %s\n"
+ msgstr "%s: b³±d przy usuwaniu domy¶lnego acl dla \"%s\": %s\n"
+ 
+-#: ../chacl/chacl.c:185 ../chacl/chacl.c:204
++#: ../chacl/chacl.c:172 ../chacl/chacl.c:191
+ #, c-format
+ msgid "%s: access ACL '%s': %s at entry %d\n"
+ msgstr "%s: dostêpowe ACL '%s': %s na pozycji %d\n"
+ 
+-#: ../chacl/chacl.c:272
++#: ../chacl/chacl.c:259
+ #, c-format
+ msgid "%s: cannot get access ACL on '%s': %s\n"
+ msgstr "%s: nie mo¿na odczytaæ dostêpowego ACL dla '%s': %s\n"
+ 
+-#: ../chacl/chacl.c:278
++#: ../chacl/chacl.c:265
+ #, c-format
+ msgid "%s: cannot get default ACL on '%s': %s\n"
+ msgstr "%s: nie mo¿na odczytaæ domy¶lnego ACL dla '%s': %s\n"
+ 
+-#: ../chacl/chacl.c:284
++#: ../chacl/chacl.c:271
+ #, c-format
+ msgid "%s: cannot get access ACL text on '%s': %s\n"
+ msgstr "%s: nie mo¿na odczytaæ dostêpowego tekstu ACL dla '%s': %s\n"
+ 
+-#: ../chacl/chacl.c:291
++#: ../chacl/chacl.c:278
+ #, c-format
+ msgid "%s: cannot get default ACL text on '%s': %s\n"
+ msgstr "%s: nie mo¿na odczytaæ domy¶lnego tekstu ACL dla '%s': %s\n"
+ 
+-#: ../chacl/chacl.c:317
++#: ../chacl/chacl.c:304
+ #, c-format
+ msgid "%s: cannot set access acl on \"%s\": %s\n"
+ msgstr "%s: nie mo¿na ustawiæ dostêpowego acl dla \"%s\": %s\n"
+ 
+-#: ../chacl/chacl.c:323
++#: ../chacl/chacl.c:310
+ #, c-format
+ msgid "%s: cannot set default acl on \"%s\": %s\n"
+ msgstr "%s: nie mo¿na ustawiæ domy¶lnego acl dla \"%s\": %s\n"
+ 
+-#: ../chacl/chacl.c:341
++#: ../chacl/chacl.c:328
+ #, c-format
+ msgid "%s: opendir failed: %s\n"
+ msgstr "%s: opendir nie powiod³o siê: %s\n"
+ 
+-#: ../chacl/chacl.c:355
++#: ../chacl/chacl.c:342
+ #, c-format
+ msgid "%s: malloc failed: %s\n"
+ msgstr "%s: malloc nie powiód³ siê: %s\n"
+ 
+-#: ../setfacl/do_set.c:404
++#: ../setfacl/do_set.c:409
+ #, c-format
+ msgid "%s: %s: Malformed access ACL `%s': %s at entry %d\n"
+ msgstr "%s: %s: ¬le sformu³owane dostêpowe ACL `%s': %s na pozycji %d\n"
+ 
+-#: ../setfacl/do_set.c:431
++#: ../setfacl/do_set.c:436
+ #, c-format
+ msgid "%s: %s: Malformed default ACL `%s': %s at entry %d\n"
+ msgstr "%s: %s: ¬le sformu³owane domy¶lne ACL `%s': %s na pozycji %d\n"
+ 
+-#: ../setfacl/do_set.c:494
++#: ../setfacl/do_set.c:500
+ #, c-format
+ msgid "%s: %s: Only directories can have default ACLs\n"
+ msgstr "%s: %s: Tylko katalogi mog± mieæ domy¶lne ACL-e\n"
+ 
+-#: ../setfacl/setfacl.c:151
++#: ../setfacl/setfacl.c:148
+ #, c-format
+ msgid "%s: %s: No filename found in line %d, aborting\n"
+ msgstr "%s: %s: Nie znaleziono nazwy pliku w linii %d, przerwanie pracy\n"
+ 
+-#: ../setfacl/setfacl.c:156
++#: ../setfacl/setfacl.c:153
+ #, c-format
+ msgid "%s: No filename found in line %d of standard input, aborting\n"
+ msgstr "%s: Nie znaleziono nazwy pliku w linii %d standardowego wej¶cia, przerwanie pracy\n"
+ 
+-#: ../setfacl/setfacl.c:177
++#: ../setfacl/setfacl.c:174
+ #, c-format
+ msgid "%s: %s: %s in line %d\n"
+ msgstr "%s: %s: %s w linii %d\n"
+ 
+-#: ../setfacl/setfacl.c:201
++#: ../setfacl/setfacl.c:206
+ #, c-format
+ msgid "%s: %s: Cannot change owner/group: %s\n"
+ msgstr "%s: %s: Nie mo¿na zmieniæ w³a¶ciciela/grupy: %s\n"
+ 
+-#: ../setfacl/setfacl.c:241
++#: ../setfacl/setfacl.c:225
++#, c-format
++msgid "%s: %s: Cannot change mode: %s\n"
++msgstr "%s: %s: Nie mo¿na zmieniæ uprawnieñ: %s\n"
++
++#: ../setfacl/setfacl.c:267
+ #, c-format
+ msgid "%s %s -- set file access control lists\n"
+ msgstr "%s %s -- ustawianie list kontroli dostêpu do plików (ACL-i)\n"
+ 
+-#: ../setfacl/setfacl.c:243 ../setfacl/setfacl.c:701
++#: ../setfacl/setfacl.c:269 ../setfacl/setfacl.c:655
+ #, c-format
+ msgid "Usage: %s %s\n"
+ msgstr "Sk³adnia: %s %s\n"
+ 
+-#: ../setfacl/setfacl.c:246
++#: ../setfacl/setfacl.c:272
+ #, c-format
+ msgid ""
+ "  -m, --modify=acl        modify the current ACL(s) of file(s)\n"
+@@ -188,7 +195,7 @@
  "  -b, --remove-all        usuniêcie wszystkich rozszerzonych pozycji ACL\n"
  "  -k, --remove-default    usuniêcie domy¶lnego ACL\n"
  
 -#: ../setfacl/setfacl.c:255
-+#: ../setfacl/setfacl.c:247
++#: ../setfacl/setfacl.c:281
  #, c-format
  msgid ""
  "      --set=acl           set the ACL of file(s), replacing the current ACL\n"
-@@ -187,7 +188,7 @@
+@@ -199,7 +206,7 @@
  "      --set-file=plik     odczytanie z pliku pozycji ACL do ustawienia\n"
  "      --mask              przeliczenie maski efektywnych uprawnieñ\n"
  
 -#: ../setfacl/setfacl.c:261
-+#: ../setfacl/setfacl.c:253
++#: ../setfacl/setfacl.c:287
  #, c-format
  msgid ""
  "  -n, --no-mask           don't recalculate the effective rights mask\n"
-@@ -196,7 +197,7 @@
+@@ -208,7 +215,7 @@
  "  -n, --no-mask           nie przeliczanie maski efektywnych uprawnieñ\n"
  "  -d, --default           wykonywanie operacji na domy¶lnym ACL\n"
  
 -#: ../setfacl/setfacl.c:266
-+#: ../setfacl/setfacl.c:258
++#: ../setfacl/setfacl.c:292
  #, c-format
  msgid ""
  "  -R, --recursive         recurse into subdirectories\n"
-@@ -213,7 +214,7 @@
+@@ -225,96 +232,96 @@
  "      --restore=plik      odtworzenie ACL-i (odwrotno¶æ `getfacl -R')\n"
  "      --test              tryb testowy (ACL-e nie s± modyfikowane)\n"
  
 -#: ../setfacl/setfacl.c:274 ../getfacl/getfacl.c:558
-+#: ../setfacl/setfacl.c:266 ../getfacl/getfacl.c:573
++#: ../setfacl/setfacl.c:300 ../getfacl/getfacl.c:587
  #, c-format
  msgid ""
- "      --version           print version and exit\n"
-@@ -222,52 +223,57 @@
- "      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
- "      --help              ten tekst pomocy\n"
+-"      --version           print version and exit\n"
+-"      --help              this help text\n"
++"  -v, --version           print version and exit\n"
++"  -h, --help              this help text\n"
+ msgstr ""
+-"      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
+-"      --help              ten tekst pomocy\n"
++"  -v, --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
++"  -h, --help              ten tekst pomocy\n"
  
 -#: ../setfacl/setfacl.c:493
-+#: ../setfacl/setfacl.c:280 ../getfacl/getfacl.c:714
++#: ../setfacl/setfacl.c:317 ../getfacl/getfacl.c:729
 +#, c-format
 +msgid "%s: Standard input: %s\n"
 +msgstr "%s: Standardowe wej¶cie: %s\n"
 +
-+#: ../setfacl/setfacl.c:416
++#: ../setfacl/setfacl.c:453
  #, c-format
  msgid "%s: Option -%c incomplete\n"
  msgstr "%s: Opcja -%c niekompletna\n"
  
 -#: ../setfacl/setfacl.c:498
-+#: ../setfacl/setfacl.c:421
++#: ../setfacl/setfacl.c:458
  #, c-format
  msgid "%s: Option -%c: %s near character %d\n"
  msgstr "%s: Opcja -%c: %s obok znaku %d\n"
  
 -#: ../setfacl/setfacl.c:584
-+#: ../setfacl/setfacl.c:497
++#: ../setfacl/setfacl.c:534
  #, c-format
  msgid "%s: %s in line %d of file %s\n"
  msgstr "%s: %s w linii %d pliku %s\n"
  
 -#: ../setfacl/setfacl.c:592
-+#: ../setfacl/setfacl.c:505
++#: ../setfacl/setfacl.c:542
  #, c-format
  msgid "%s: %s in line %d of standard input\n"
  msgstr "%s: %s w linii %d standardowego wej¶cia\n"
  
 -#: ../setfacl/setfacl.c:703 ../getfacl/getfacl.c:774
-+#: ../setfacl/setfacl.c:616 ../getfacl/getfacl.c:729
++#: ../setfacl/setfacl.c:657 ../getfacl/getfacl.c:744
  #, c-format
  msgid "Try `%s --help' for more information.\n"
  msgstr "`%s --help' wy¶wietli wiêcej informacji.\n"
  
 -#: ../getfacl/getfacl.c:462
-+#: ../getfacl/getfacl.c:477
++#: ../getfacl/getfacl.c:489
  #, c-format
  msgid "%s: Removing leading '/' from absolute path names\n"
  msgstr "%s: Usuniêcie wiod±cego '/' ze ¶cie¿ek bezwzglêdnych\n"
  
 -#: ../getfacl/getfacl.c:531
-+#: ../getfacl/getfacl.c:546
++#: ../getfacl/getfacl.c:560
  #, c-format
  msgid "%s %s -- get file access control lists\n"
  msgstr "%s %s -- odczyt list kontroli dostêpu do plików (ACL-i)\n"
  
 -#: ../getfacl/getfacl.c:533 ../getfacl/getfacl.c:772
-+#: ../getfacl/getfacl.c:548 ../getfacl/getfacl.c:727
++#: ../getfacl/getfacl.c:562 ../getfacl/getfacl.c:742
  #, c-format
  msgid "Usage: %s [-%s] file ...\n"
  msgstr "Sk³adnia: %s [-%s] plik ...\n"
  
 -#: ../getfacl/getfacl.c:539
-+#: ../getfacl/getfacl.c:554
++#: ../getfacl/getfacl.c:568
  #, c-format
  msgid "  -d, --default           display the default access control list\n"
  msgstr "  -d, --default           wy¶wietlenie domy¶lnej listy kontroli dostêpu\n"
  
 -#: ../getfacl/getfacl.c:543
-+#: ../getfacl/getfacl.c:558
++#: ../getfacl/getfacl.c:572
  #, c-format
  msgid ""
- "      --access            display the file access control list only\n"
-@@ -278,7 +284,7 @@
- "      --skip-base         skip files that only have the base entries\n"
+-"      --access            display the file access control list only\n"
++"  -a,  --access           display the file access control list only\n"
+ "  -d, --default           display the default access control list only\n"
+-"      --omit-header       do not display the comment header\n"
+-"      --all-effective     print all effective rights\n"
+-"      --no-effective      print no effective rights\n"
+-"      --skip-base         skip files that only have the base entries\n"
++"  -c, --omit-header       do not display the comment header\n"
++"  -e, --all-effective     print all effective rights\n"
++"  -E, --no-effective      print no effective rights\n"
++"  -s, --skip-base         skip files that only have the base entries\n"
  "  -R, --recursive         recurse into subdirectories\n"
  "  -L, --logical           logical walk, follow symbolic links\n"
 -"  -P  --physical          physical walk, do not follow symbolic links\n"
+-"      --tabular           use tabular output format\n"
+-"      --numeric           print numeric user/group identifiers\n"
+-"      --absolute-names    don't strip leading '/' in pathnames\n"
 +"  -P, --physical          physical walk, do not follow symbolic links\n"
- "      --tabular           use tabular output format\n"
- "      --numeric           print numeric user/group identifiers\n"
- "      --absolute-names    don't strip leading '/' in pathnames\n"
-@@ -299,11 +305,6 @@
++"  -t, --tabular           use tabular output format\n"
++"  -n, --numeric           print numeric user/group identifiers\n"
++"  -p, --absolute-names    don't strip leading '/' in pathnames\n"
+ msgstr ""
+-"      --access            wy¶wietlenie tylko listy kontroli dostêpu do pliku\n"
++"  -a, --access            wy¶wietlenie tylko listy kontroli dostêpu do pliku\n"
+ "  -d, --default           wy¶wietlenie tylko domy¶lnej listy kontroli dostêpu\n"
+-"      --omit-header       nie wy¶wietlanie nag³ówka z komentarzem\n"
+-"      --all-effective     wy¶wietlanie wszystkich efektywnych uprawnieñ\n"
+-"      --no-effective      nie wy¶wietlanie efektywnych uprawnieñ\n"
+-"      --skip-base         pominiêcie plików z sam± podstawow± pozycj±\n"
++"  -c, --omit-header       nie wy¶wietlanie nag³ówka z komentarzem\n"
++"  -e, --all-effective     wy¶wietlanie wszystkich efektywnych uprawnieñ\n"
++"  -E, --no-effective      nie wy¶wietlanie efektywnych uprawnieñ\n"
++"  -s, --skip-base         pominiêcie plików z sam± podstawow± pozycj±\n"
+ "  -R, --recursive         rekurencyjne wchodzenie do katalogów\n"
+ "  -L, --logical           przechodzenie logiczne, pod±¿anie za dowi±zaniami\n"
+ "                            symbolicznymi\n"
+ "  -P, --physical          przechodzenie fizyczne, nie pod±¿anie za dowi±zaniami\n"
+ "                            symbolicznymi\n"
+-"      --tabular           wyj¶cie w formacie tabeli\n"
+-"      --numeric           wy¶wietlanie liczbowych identyfikatorów\n"
++"  -t, --tabular           wyj¶cie w formacie tabeli\n"
++"  -n, --numeric           wy¶wietlanie liczbowych identyfikatorów\n"
  "                            u¿ytkowników/grup\n"
- "      --absolute-names    nie usuwanie wiod±cego '/' z nazw plików\n"
- 
+-"      --absolute-names    nie usuwanie wiod±cego '/' z nazw plików\n"
+-
 -#: ../getfacl/getfacl.c:760
 -#, c-format
 -msgid "%s: Standard input: %s\n"
 -msgstr "%s: Standardowe wej¶cie: %s\n"
--
++"  -p, --absolute-names    nie usuwanie wiod±cego '/' z nazw plików\n"
+ 
  #: ../libacl/acl_error.c:34
  msgid "Multiple entries of same type"
- msgstr "Wiele pozycji tego samego typu"
-@@ -320,16 +321,16 @@
+@@ -332,16 +339,16 @@
  msgid "Invalid entry type"
  msgstr "Nieprawid³owy typ pozycji"
  
