@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.51
+Version:	2.2.52
 Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
-Source0:	http://download.savannah.gnu.org/releases-noredirect/acl/%{name}-%{version}.src.tar.gz
-# Source0-md5:	3fc0ce99dc5253bdcce4c9cd437bc267
+Source0:	http://git.savannah.gnu.org/cgit/acl.git/snapshot/%{name}-%{version}.tar.gz
+# Source0-md5:	8d720d6bf9ef41d8995f145637f48d57
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
@@ -68,15 +68,15 @@ Statyczna biblioteka acl.
 %patch2 -p1
 %patch3 -p1
 
-%{__rm} aclocal.m4
+%{__rm} -f aclocal.m4
 
 %build
-mv install-sh install-custom-sh
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 cp -f /usr/share/automake/config.sub .
-mv install-custom-sh install-sh
+install include/install-sh .
+
 %configure \
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
 	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
