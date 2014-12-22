@@ -15,7 +15,7 @@ URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.402
 Requires:	attr >= 2.4.15
