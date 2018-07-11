@@ -1,30 +1,26 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.52
-Release:	2
+Version:	2.2.53
+Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	http://git.savannah.gnu.org/cgit/acl.git/snapshot/%{name}-%{version}.tar.gz
-# Source0-md5:	8d720d6bf9ef41d8995f145637f48d57
-Patch0:		%{name}-miscfix.patch
-Patch1:		%{name}-lt.patch
-Patch2:		%{name}-LDFLAGS.patch
-Patch3:		%{name}-pl.po-update.patch
+# Source0-md5:	0c72e292be55ac60e890c00e6c561af8
+Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-tools
-BuildRequires:	libtool
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	gettext-tools >= 0.18.2
+BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.402
+BuildRequires:	sed >= 4.0
 Requires:	attr >= 2.4.15
 Obsoletes:	libacl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
-%define		_libdir		/%{_lib}
-%define		_libexecdir	/usr/%{_lib}
 
 %description
 A command (chacl) and a library (libacl) to manipulate POSIX access
@@ -64,59 +60,35 @@ Statyczna biblioteka acl.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
-%{__rm} -f aclocal.m4
+# prepare for gettextize
+%{__sed} -i -e 's,po/Makefile\.in,,' configure.ac
 
 %build
+po/update-potfiles
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
-cp -f /usr/share/automake/config.sub .
-install include/install-sh .
+%{__autoheader}
+%{__automake}
 
-%configure \
-	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
-	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
+%configure
 
-%{__make} \
-	LLDFLAGS="%{rpmldflags}" \
-	top_builddir="../"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir}/acl,%{_mandir}/man3}
-
-export DIST_ROOT=$RPM_BUILD_ROOT
-P=$(pwd)
-DIST_INSTALL=$P/install.manifest
-DIST_INSTALL_DEV=$P/install-dev.manifest
-DIST_INSTALL_LIB=$P/install-lib.manifest
 
 %{__make} install \
-	DIST_MANIFEST=$DIST_INSTALL \
-	top_builddir="../"
-%{__make} install-dev \
-	DIST_MANIFEST=$DIST_INSTALL_DEV \
-	top_builddir="../"
-%{__make} install-lib \
-	DIST_MANIFEST=$DIST_INSTALL_LIB \
-	top_builddir="../"
+	DESTDIR=$RPM_BUILD_ROOT
 
-ln -snf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libacl.so.*.*.*) \
-	$RPM_BUILD_ROOT%{_libexecdir}/libacl.so
-%{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
-	$RPM_BUILD_ROOT%{_libexecdir}/libacl.la
+install -d $RPM_BUILD_ROOT/%{_lib}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libacl.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -snf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libacl.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libacl.so
 
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
-
-# already in /usr
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libacl.{so,la,a}
-
-# fix perms (needed for debuginfo and autorequires/provides)
-chmod a+x $RPM_BUILD_ROOT%{_libdir}/libacl.so.*.*.*
 
 %find_lang %{name}
 
@@ -132,8 +104,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/chacl
 %attr(755,root,root) %{_bindir}/getfacl
 %attr(755,root,root) %{_bindir}/setfacl
-%attr(755,root,root) %{_libdir}/libacl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libacl.so.1
+%attr(755,root,root) /%{_lib}/libacl.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libacl.so.1
 %{_mandir}/man1/chacl.1*
 %{_mandir}/man1/getfacl.1*
 %{_mandir}/man1/setfacl.1*
@@ -142,12 +114,13 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{extensions.txt,libacl.txt}
-%attr(755,root,root) %{_libexecdir}/libacl.so
-%{_libexecdir}/libacl.la
+%attr(755,root,root) %{_libdir}/libacl.so
+%{_libdir}/libacl.la
 %{_includedir}/acl
 %{_includedir}/sys/acl.h
+%{_pkgconfigdir}/libacl.pc
 %{_mandir}/man3/acl_*.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libexecdir}/libacl.a
+%{_libdir}/libacl.a
