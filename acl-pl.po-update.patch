@@ -1,37 +1,70 @@
---- acl-2.2.53/po/pl.po.orig	2018-06-19 05:27:20.000000000 +0200
-+++ acl-2.2.53/po/pl.po	2018-07-10 22:00:12.180986374 +0200
+--- acl-2.3.1/po/pl.po.orig	2021-03-16 07:43:21.000000000 +0100
++++ acl-2.3.1/po/pl.po	2022-05-20 22:11:50.192301630 +0200
 @@ -1,6 +1,6 @@
  # Polish translation for acl.
  # Copyright (C) 2004 Free Software Foundation, Inc.
 -# Jakub Bogusz <qboosh@pld-linux.org>, 2004.
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2018.
++# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2022.
  #
  # This program is free software: you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
-@@ -17,10 +17,10 @@
- #
- msgid ""
- msgstr ""
--"Project-Id-Version: acl-2.2.22\n"
-+"Project-Id-Version: acl-2.2.53\n"
- "Report-Msgid-Bugs-To: acl-devel@nongnu.org\n"
- "POT-Creation-Date: 2014-01-10 09:16-0500\n"
--"PO-Revision-Date: 2004-01-28 22:31+0100\n"
-+"PO-Revision-Date: 2018-07-10 21:52+0200\n"
- "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
- "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
- "Language: pl\n"
-@@ -80,7 +80,7 @@
- "  -d, --default           wy¶wietlenie domy¶lnej listy kontroli dostêpu\n"
+@@ -196,9 +196,9 @@ msgid "%s: %s: Cannot change owner/group
+ msgstr "%s: %s: Nie mo¿na zmieniæ w³a¶ciciela/grupy: %s\n"
  
- #: tools/getfacl.c:571
+ #: tools/setfacl.c:224
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: %s: Cannot change mode: %s\n"
+-msgstr "%s: %s: Nie mo¿na zmieniæ w³a¶ciciela/grupy: %s\n"
++msgstr "%s: %s: Nie mo¿na zmieniæ uprawnieñ: %s\n"
+ 
+ #: tools/setfacl.c:266
+ #, c-format
+@@ -244,7 +244,7 @@ msgid ""
+ "  -n, --no-mask           don't recalculate the effective rights mask\n"
+ "  -d, --default           operations apply to the default ACL\n"
+ msgstr ""
+-"  -n, --no-mask           nie przeliczanie maski efektywnych uprawnieñ\n"
++"  -n, --no-mask           nieprzeliczanie maski efektywnych uprawnieñ\n"
+ "  -d, --default           wykonywanie operacji na domy¶lnym ACL\n"
+ 
+ #: tools/setfacl.c:291
+@@ -259,20 +259,20 @@ msgstr ""
+ "  -R, --recursive         rekurencyjne wchodzenie do katalogów\n"
+ "  -L, --logical           przechodzenie logiczne, pod±¿anie za dowi±zaniami\n"
+ "                            symbolicznymi\n"
+-"  -P, --physical          przechodzenie fizyczne, nie pod±¿anie za "
++"  -P, --physical          przechodzenie fizyczne, niepod±¿anie za "
+ "dowi±zaniami\n"
+ "                            symbolicznymi\n"
+ "      --restore=plik      odtworzenie ACL-i (odwrotno¶æ `getfacl -R')\n"
+ "      --test              tryb testowy (ACL-e nie s± modyfikowane)\n"
+ 
+ #: tools/setfacl.c:299 tools/getfacl.c:597
 -#, fuzzy, c-format
 +#, c-format
  msgid ""
- "  -a,  --access           display the file access control list only\n"
+ "  -v, --version           print version and exit\n"
+ "  -h, --help              this help text\n"
+ msgstr ""
+-"      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
+-"      --help              ten tekst pomocy\n"
++"  -v, --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
++"  -h, --help              ten tekst pomocy\n"
+ 
+ #: tools/setfacl.c:316 tools/getfacl.c:743
+ #, c-format
+@@ -326,7 +326,7 @@ msgstr ""
+ "  -d, --default           wy¶wietlenie domy¶lnej listy kontroli dostêpu\n"
+ 
+ #: tools/getfacl.c:581
+-#, fuzzy, c-format
++#, c-format
+ msgid ""
+ "  -a, --access            display the file access control list only\n"
  "  -d, --default           display the default access control list only\n"
-@@ -95,33 +95,33 @@
- "  -n, --numeric           print numeric user/group identifiers\n"
+@@ -342,21 +342,22 @@ msgid ""
+ "      --one-file-system   skip files on different filesystems\n"
  "  -p, --absolute-names    don't strip leading '/' in pathnames\n"
  msgstr ""
 -"      --access            wy¶wietlenie tylko listy kontroli dostêpu do "
@@ -43,10 +76,10 @@
 -"      --all-effective     wy¶wietlanie wszystkich efektywnych uprawnieñ\n"
 -"      --no-effective      nie wy¶wietlanie efektywnych uprawnieñ\n"
 -"      --skip-base         pominiêcie plików z sam± podstawow± pozycj±\n"
-+"  -c, --omit-header       niewy¶wietlanie nag³ówka z komentarzem\n"
++"  -c, --omit-header       bez wy¶wietlania nag³ówka z komentarzem\n"
 +"  -e, --all-effective     wy¶wietlanie wszystkich efektywnych uprawnieñ\n"
-+"  -E, --no-effective      niewy¶wietlanie efektywnych uprawnieñ\n"
-+"  -s, --skip-base         pominiêcie plików z sam± podstawow± pozycj±\n"
++"  -E, --no-effective      bez wy¶wietlania efektywnych uprawnieñ\n"
++"  -s, --skip-base         pominiêcie plików z samymi podstawowymi wpisami\n"
  "  -R, --recursive         rekurencyjne wchodzenie do katalogów\n"
  "  -L, --logical           przechodzenie logiczne, pod±¿anie za dowi±zaniami\n"
  "                            symbolicznymi\n"
@@ -60,49 +93,5 @@
 +"  -n, --numeric           wy¶wietlanie liczbowych identyfikatorów\n"
  "                            u¿ytkowników/grup\n"
 -"      --absolute-names    nie usuwanie wiod±cego '/' z nazw plików\n"
-+"  -p, --absolute-names    nieusuwanie wiod±cego '/' z nazw plików\n"
- 
- #: tools/getfacl.c:586 tools/setfacl.c:300
--#, fuzzy, c-format
-+#, c-format
- msgid ""
- "  -v, --version           print version and exit\n"
- "  -h, --help              this help text\n"
- msgstr ""
--"      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
--"      --help              ten tekst pomocy\n"
-+"  -v, --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
-+"  -h, --help              ten tekst pomocy\n"
- 
- #: tools/getfacl.c:728 tools/setfacl.c:317
- #, c-format
-@@ -171,9 +171,9 @@
- msgstr "%s: %s: Nie mo¿na zmieniæ w³a¶ciciela/grupy: %s\n"
- 
- #: tools/setfacl.c:225
--#, fuzzy, c-format
-+#, c-format
- msgid "%s: %s: Cannot change mode: %s\n"
--msgstr "%s: %s: Nie mo¿na zmieniæ w³a¶ciciela/grupy: %s\n"
-+msgstr "%s: %s: Nie mo¿na zmieniæ uprawnieñ: %s\n"
- 
- #: tools/setfacl.c:267
- #, c-format
-@@ -219,7 +219,7 @@
- "  -n, --no-mask           don't recalculate the effective rights mask\n"
- "  -d, --default           operations apply to the default ACL\n"
- msgstr ""
--"  -n, --no-mask           nie przeliczanie maski efektywnych uprawnieñ\n"
-+"  -n, --no-mask           nieprzeliczanie maski efektywnych uprawnieñ\n"
- "  -d, --default           wykonywanie operacji na domy¶lnym ACL\n"
- 
- #: tools/setfacl.c:292
-@@ -234,7 +234,7 @@
- "  -R, --recursive         rekurencyjne wchodzenie do katalogów\n"
- "  -L, --logical           przechodzenie logiczne, pod±¿anie za dowi±zaniami\n"
- "                            symbolicznymi\n"
--"  -P, --physical          przechodzenie fizyczne, nie pod±¿anie za "
-+"  -P, --physical          przechodzenie fizyczne, niepod±¿anie za "
- "dowi±zaniami\n"
- "                            symbolicznymi\n"
- "      --restore=plik      odtworzenie ACL-i (odwrotno¶æ `getfacl -R')\n"
++"      --one-file-system   pomijanie plików na innych systemach plików\n"
++"      --absolute-names    nieusuwanie wiod±cego '/' z nazw plików\n"

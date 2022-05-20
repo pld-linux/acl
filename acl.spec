@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.2.53
+Version:	2.3.1
 Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
-Source0:	http://git.savannah.gnu.org/cgit/acl.git/snapshot/%{name}-%{version}.tar.gz
-# Source0-md5:	0c72e292be55ac60e890c00e6c561af8
+Source0:	http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.xz
+# Source0-md5:	95ce715fe09acca7c12d3306d0f076b2
 Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
@@ -16,8 +16,10 @@ BuildRequires:	gettext-tools >= 0.18.2
 BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.402
 BuildRequires:	sed >= 4.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	attr >= 2.4.15
-Obsoletes:	libacl
+Obsoletes:	libacl < 2.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
@@ -61,18 +63,15 @@ Statyczna biblioteka acl.
 %setup -q
 %patch0 -p1
 
-# prepare for gettextize
-%{__sed} -i -e 's,po/Makefile\.in,,' configure.ac
+%{__rm} po/stamp-po
 
 %build
-po/update-potfiles
 %{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-
 %configure
 
 %{__make}
