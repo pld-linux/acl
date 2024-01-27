@@ -9,9 +9,9 @@ Source0:	http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar
 # Source0-md5:	590765dee95907dbc3c856f7255bd669
 URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1:1.11
-BuildRequires:	gettext-tools >= 0.18.2
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.15
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.402
 BuildRequires:	sed >= 4.0
