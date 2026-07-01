@@ -1,12 +1,12 @@
 Summary:	Command and library for manipulating access control lists
 Summary(pl.UTF-8):	Polecenie i biblioteka do manipulacji listami kontroli dostępu (ACL)
 Name:		acl
-Version:	2.3.2
+Version:	2.4.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.xz
-# Source0-md5:	590765dee95907dbc3c856f7255bd669
+# Source0-md5:	e289f370161698a96f50b2a3fdadf411
 URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf >= 2.69
@@ -17,7 +17,6 @@ BuildRequires:	rpmbuild(macros) >= 1.402
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	attr >= 2.4.15
 Obsoletes:	libacl < 2.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,7 +35,6 @@ Summary:	Header files for acl library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki acl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	attr-devel >= 2.4.16-3
 
 %description devel
 Header files to develop software which manipulate access control
