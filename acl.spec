@@ -7,6 +7,7 @@ License:	LGPL v2+ (library), GPL v2 (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.xz
 # Source0-md5:	e289f370161698a96f50b2a3fdadf411
+Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/acl/
 BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf >= 2.69
@@ -60,6 +61,9 @@ Statyczna biblioteka acl.
 
 %prep
 %setup -q
+%patch -P0 -p1
+
+%{__rm} po/stamp-po
 
 %build
 %{__gettextize}
