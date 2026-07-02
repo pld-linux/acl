@@ -66,7 +66,8 @@ Statyczna biblioteka acl.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 
 %{__make}
 
@@ -76,10 +77,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# make library usable without /usr
 install -d $RPM_BUILD_ROOT/%{_lib}
 %{__mv} $RPM_BUILD_ROOT%{_libdir}/libacl.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -snf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libacl.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libacl.so
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libacl.la
 
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
@@ -97,8 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/chacl
 %attr(755,root,root) %{_bindir}/getfacl
 %attr(755,root,root) %{_bindir}/setfacl
-%attr(755,root,root) /%{_lib}/libacl.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libacl.so.1
+/%{_lib}/libacl.so.*.*.*
+%ghost /%{_lib}/libacl.so.1
 %{_mandir}/man1/chacl.1*
 %{_mandir}/man1/getfacl.1*
 %{_mandir}/man1/setfacl.1*
@@ -107,8 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{extensions.txt,libacl.txt}
-%attr(755,root,root) %{_libdir}/libacl.so
-%{_libdir}/libacl.la
+%{_libdir}/libacl.so
 %{_includedir}/acl
 %{_includedir}/sys/acl.h
 %{_pkgconfigdir}/libacl.pc
