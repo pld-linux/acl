@@ -37,7 +37,7 @@ POSIX listami kontroli dostępu (ACL) pod Linuksem.
 Summary:	Header files for acl library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki acl
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Header files to develop software which manipulate access control
@@ -51,7 +51,7 @@ listami kontroli dostępu (ACL).
 Summary:	Static acl library
 Summary(pl.UTF-8):	Statyczna biblioteka acl
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static acl library.
